@@ -1,50 +1,47 @@
-# AopDoctrineBundle
+# Symfony AOP Doctrine Bundle
 
-AopDoctrineBundle 是一个基于 Symfony 的 Doctrine 增强包，通过 AOP 技术为 Doctrine ORM 提供声明式事务等功能，参考了 Spring Boot 的设计理念。
+[English](README.md) | [中文](README.zh-CN.md)
 
-## 核心功能
+[![Latest Version](https://img.shields.io/packagist/v/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://packagist.org/packages/tourze/symfony-aop-doctrine-bundle)
+[![Build Status](https://img.shields.io/travis/tourze/symfony-aop-doctrine-bundle/master.svg?style=flat-square)](https://travis-ci.org/tourze/symfony-aop-doctrine-bundle)
+[![Quality Score](https://img.shields.io/scrutinizer/g/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/tourze/symfony-aop-doctrine-bundle)
+[![Total Downloads](https://img.shields.io/packagist/dt/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://packagist.org/packages/tourze/symfony-aop-doctrine-bundle)
 
-### 1. 声明式事务
-- 支持通过 `#[Transactional]` 注解标记事务方法
-- 自动处理事务的开启和提交
-- 智能的事务嵌套处理
-- 详细的事务日志记录
+A Symfony bundle that enhances Doctrine ORM with declarative transaction management via AOP (Aspect-Oriented Programming), inspired by the design of Spring Boot.
 
-### 2. 事务管理
-- 自动检测活动事务
-- 支持事务传播
-- 异常时自动回滚
-- 支持事务超时设置
+## Features
 
-### 3. 性能优化
-- 智能的事务复用
-- 避免不必要的事务开启
-- 事务状态追踪
-- 连接池集成支持
+- Declarative transaction support with `#[Transactional]` attribute
+- Automatic transaction begin/commit/rollback
+- Nested transaction and transaction propagation
+- Detailed transaction logging
+- Smart transaction reuse and performance optimization
 
-## 使用示例
+## Installation
 
-### 1. 声明式事务
+```bash
+composer require tourze/symfony-aop-doctrine-bundle
+```
+
+## Quick Start
 
 ```php
-use AopDoctrineBundle\Attribute\Transactional;
+use Tourze\Symfony\AopDoctrineBundle\Attribute\Transactional;
 
 class YourService
 {
     #[Transactional]
     public function doSomething()
     {
-        // 这个方法会在事务中执行
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
-
-        // 如果抛出异常，事务会自动回滚
-        // 如果正常完成，事务会自动提交
+        // If an exception is thrown, the transaction will be rolled back automatically.
+        // If completed normally, the transaction will be committed automatically.
     }
 }
 ```
 
-### 2. 嵌套事务处理
+### Nested Transactions
 
 ```php
 class YourService
@@ -52,69 +49,54 @@ class YourService
     #[Transactional]
     public function outerMethod()
     {
-        // 外层事务
         $this->innerMethod();
-        // 事务会在这里提交
+        // The transaction is committed here.
     }
 
     #[Transactional]
     public function innerMethod()
     {
-        // 内层方法会复用外层事务
-        // 不会创建新的事务
+        // This method reuses the outer transaction, no new transaction is created.
     }
 }
 ```
 
-### 3. 事务日志
+### Transaction Logging
 
 ```php
 use Psr\Log\LoggerInterface;
 
 class YourService
 {
-    public function __construct(
-        private LoggerInterface $logger
-    ) {}
-    
+    public function __construct(private LoggerInterface $logger) {}
+
     #[Transactional]
     public function doSomething()
     {
-        // 事务的开启和结束会被自动记录到日志
-        // [debug] 通过注解开启事务
+        // Transaction start and end will be automatically logged.
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
-        // [debug] 通过注解结束事务
     }
 }
 ```
 
-## 注意事项
+## Notes
 
-1. 事务管理
-   - 事务注解只能用于 public 方法
-   - 内层事务会自动复用外层事务
-   - 事务方法抛出异常会导致回滚
-   - 确保在事务方法中使用正确的 EntityManager
+- The `#[Transactional]` attribute can only be applied to public methods.
+- Nested transactions are automatically reused.
+- Any exception thrown in a transactional method will cause a rollback.
+- Make sure to use the correct EntityManager inside transactional methods.
+- Avoid long-running transactions and non-DB operations inside transactions.
+- Distributed and cross-database transactions are not supported.
 
-2. 性能考虑
-   - 避免过长的事务
-   - 不要在事务中执行耗时的非数据库操作
-   - 合理设置事务超时时间
-   - 注意监控事务执行时间
+## Contributing
 
-3. 调试建议
-   - 使用日志追踪事务执行
-   - 监控事务执行时间
-   - 注意检查事务是否正确提交或回滚
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-4. 限制
-   - 不支持跨数据库事务
-   - 不支持分布式事务
-   - 某些特殊操作可能不适合在事务中执行
+## License
 
-5. 最佳实践
-   - 事务方法应该尽可能简短
-   - 避免在事务中调用外部服务
-   - 合理处理事务中的异常
-   - 使用正确的事务传播行为
+MIT License. See [LICENSE](LICENSE) for details.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history and upgrade notes.
