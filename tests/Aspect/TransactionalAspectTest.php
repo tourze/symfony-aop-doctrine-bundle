@@ -156,7 +156,7 @@ class TransactionalAspectTest extends TestCase
                 // 手动调用回调函数，捕获异常
                 try {
                     return $callback();
-                } catch (\Exception $e) {
+                } catch  (\Throwable $e) {
                     // 捕获异常但不传播，模拟事务回滚
                     return null;
                 }
