@@ -37,6 +37,7 @@ class AopDoctrineBundleTest extends TestCase
         $bundle = new AopDoctrineBundle();
         $path = $bundle->getPath();
 
+        $this->assertIsString($path, 'getPath应返回字符串');
         $this->assertDirectoryExists($path, 'getPath应返回有效目录路径');
         $this->assertStringEndsWith('src', $path, 'getPath应指向src目录');
     }
