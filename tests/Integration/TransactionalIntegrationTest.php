@@ -30,10 +30,6 @@ class TransactionalIntegrationTest extends TestCase
      */
     private TransactionalAspect $aspect;
 
-    /**
-     * @var TestService
-     */
-    private TestService $service;
 
     protected function setUp(): void
     {
@@ -46,8 +42,6 @@ class TransactionalIntegrationTest extends TestCase
             $this->connection,
             $this->logger
         );
-
-        $this->service = new TestService();
     }
 
     /**
