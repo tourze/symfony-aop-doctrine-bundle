@@ -6,6 +6,9 @@
 [![构建状态](https://img.shields.io/travis/tourze/symfony-aop-doctrine-bundle/master.svg?style=flat-square)](https://travis-ci.org/tourze/symfony-aop-doctrine-bundle)
 [![质量评分](https://img.shields.io/scrutinizer/g/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/tourze/symfony-aop-doctrine-bundle)
 [![下载次数](https://img.shields.io/packagist/dt/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://packagist.org/packages/tourze/symfony-aop-doctrine-bundle)
+[![PHP 版本](https://img.shields.io/packagist/php-v/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://packagist.org/packages/tourze/symfony-aop-doctrine-bundle)
+[![许可证](https://img.shields.io/packagist/l/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://packagist.org/packages/tourze/symfony-aop-doctrine-bundle)
+[![代码覆盖率](https://img.shields.io/scrutinizer/coverage/g/tourze/symfony-aop-doctrine-bundle/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/tourze/symfony-aop-doctrine-bundle/?branch=master)
 
 一个基于 Symfony 的 Doctrine ORM 增强包，通过 AOP（面向切面编程）为 Doctrine ORM 提供声明式事务管理，灵感源自 Spring Boot。
 
@@ -96,7 +99,3 @@ class YourService
 ## 许可证
 
 MIT 开源协议，详见 [LICENSE](LICENSE)
-
-## 更新日志
-
-详见 [CHANGELOG.md](CHANGELOG.md)

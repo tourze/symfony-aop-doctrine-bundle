@@ -2,13 +2,17 @@
 
 namespace Tourze\Symfony\AopDoctrineBundle\Tests\Attribute;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Tourze\Symfony\AopDoctrineBundle\Attribute\Transactional;
 
 /**
  * Transactional 属性类的单元测试
+ *
+ * @internal
  */
-class TransactionalTest extends TestCase
+#[CoversClass(Transactional::class)]
+final class TransactionalTest extends TestCase
 {
     /**
      * 测试 Transactional 属性标记是否正确生效

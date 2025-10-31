@@ -6,6 +6,9 @@
 [![Build Status](https://img.shields.io/travis/tourze/symfony-aop-doctrine-bundle/master.svg?style=flat-square)](https://travis-ci.org/tourze/symfony-aop-doctrine-bundle)
 [![Quality Score](https://img.shields.io/scrutinizer/g/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/tourze/symfony-aop-doctrine-bundle)
 [![Total Downloads](https://img.shields.io/packagist/dt/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://packagist.org/packages/tourze/symfony-aop-doctrine-bundle)
+[![PHP Version](https://img.shields.io/packagist/php-v/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://packagist.org/packages/tourze/symfony-aop-doctrine-bundle)
+[![License](https://img.shields.io/packagist/l/tourze/symfony-aop-doctrine-bundle.svg?style=flat-square)](https://packagist.org/packages/tourze/symfony-aop-doctrine-bundle)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/tourze/symfony-aop-doctrine-bundle/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/tourze/symfony-aop-doctrine-bundle/?branch=master)
 
 A Symfony bundle that enhances Doctrine ORM with declarative transaction management via AOP (Aspect-Oriented Programming), inspired by the design of Spring Boot.
 
@@ -91,12 +94,8 @@ class YourService
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for version history and upgrade notes.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
