@@ -4,7 +4,7 @@ namespace Tourze\Symfony\AopDoctrineBundle\DependencyInjection;
 
 use Tourze\SymfonyDependencyServiceLoader\AutoExtension;
 
-class AopDoctrineExtension extends AutoExtension
+final class AopDoctrineExtension extends AutoExtension
 {
     protected function getConfigDir(): string
     {
